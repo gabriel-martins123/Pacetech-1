@@ -1,117 +1,71 @@
-package DesafioSemana6;
 
+package MeuProjetoSemana6;
 import java.util.Scanner;
-
 public class Main {
-
     public static void main(String[] args) {
-
-        Scanner leitor = new Scanner(System.in);
-
-        float tempCelsius = 0f, tempFahrenheit = 0f, cCelsius = 0f, cFahrenheit = 0f;
-        float mReal = 0f, mDolar = 0f, mCotacao = 0f;
-        int menu = 0, menu2 = 0, menu3 = 0;
-
-        do {
-            System.out.println("Bem-vindo ao Menu, o que deseja fazer?");
-            System.out.println("");
-            System.out.println("1 - Convercao de Temperaturas");
-            System.out.println("2 - Convercao de Moedas");
-            System.out.println("3 - Sair");
-            System.out.println("");
-            menu = leitor.nextInt();
-            switch (menu) {
-                case 1 -> {
-                    do {
-                        System.out.println("1 - Converter Celsius para Fahrenheit");
-                        System.out.println("2 - Converter Fahrenheit para Celsius");
-                        System.out.println("3 - Voltar ao menu anterior");
-                        System.out.println("");
-                        menu2 = leitor.nextInt();
-                        switch (menu2) {
-                            case 1 -> {
-                                System.out.print("Por favor, informe o valor em Celsius"
-                                        + " que deseja converter: ");
-                                System.out.println("");
-                                tempCelsius = leitor.nextFloat();
-                                cFahrenheit = (tempCelsius * 9 / 5) + 32;
-                                System.out.println("A temperatura em Celsius " + tempCelsius
-                                        + " ºC convertida em Fahrenheit é: " + String.format("%.2f", cFahrenheit) + " ºF");
-                                System.out.println("");
-                            }
-
-                            case 2 -> {
-                                System.out.print("Por favor, informe o valor em Fahrenheit"
-                                        + " que deseja converter: ");
-                                System.out.println("");
-                                tempFahrenheit = leitor.nextFloat();
-                                cCelsius = (tempFahrenheit - 32) * 9 / 5;
-                                System.out.println("A temperatura em Fahrenheit " + tempFahrenheit
-                                        + " ºF convertida em Celsius eh: " + String.format("%.2f", cCelsius) + " ºC");
-                                System.out.println("");
-                            }
-                            case 3 -> {
-                            }
-
-                            default ->
-                                System.out.println("Opcao Invalida");
-                        }
-                    } while (menu2 != 3);
-                }
-                case 2 -> {
-                    do {
-                        System.out.println("1 - Converter Dolar para Real");
-                        System.out.println("2 - Converter Real para Dolar");
-                        System.out.println("3 - Voltar ao menu anterior");
-                        System.out.println("");
-                        menu3 = leitor.nextInt();
-                        switch (menu3) {
-                            case 1 -> {
-                                System.out.print("Por favor, informe o valor da cotacao "
-                                        + " desejada: ");
-                                System.out.println("");
-                                mCotacao = leitor.nextFloat();
-
-                                System.out.print("Por favor, informe o valor em real "
-                                        + "que deseja para que seja convertido em dolar: ");
-                                System.out.println("");
-                                mReal = leitor.nextFloat();
-                                mDolar = mReal / mCotacao;
-                                System.out.println("O valor em dolar eh: $ " + String.format("%.2f", mDolar));
-                                System.out.println("");
-                            }
-
-                            case 2 -> {
-                                System.out.print("Por favor, informe o valor da cotacao "
-                                        + " desejada: ");
-                                System.out.println("");
-                                mCotacao = leitor.nextFloat();
-                                System.out.print("Por favor, informe o valor em dolar "
-                                        + "que deseja para que seja convertido em real: ");
-                                System.out.println("");
-                                mDolar = leitor.nextFloat();
-
-                                mReal = mDolar * mCotacao;
-                                System.out.println("O valor em real eh R$: " + String.format("%.2f", mReal));
-                                System.out.println("");
-                            }
-                            case 3 -> {
-                            }
-
-                            default ->
-                                System.out.println("Opcao Invalida");
-                        }
-                    } while (menu3 != 3);
-                }
-                case 3 -> {
-                }
-
-                default ->
-                    System.out.println("Opcao Invalida");
-
-            }
-        } while (menu != 3);
-
+    float fahrenheit = 0;     float celsius = 0; float cotacao = 0; float dolar = 0;
+    float resulf = 0; float resulc = 0;
+    int menu = 0;    
+    Scanner leia = new Scanner(System.in);
+    do {
+    System.out.println("Programa de conversao de moeda/temperatura");
+    System.out.println("Escolha uma das opcoes abaixo");
+    System.out.println("1. Celsius para Farenheit");
+    System.out.println("2. Fahrenheit para Celsius");
+    System.out.println("3. Reais para Dolar");
+    System.out.println("4. Dolar para Reais");
+    System.out.println("5. Encerrar programa");
+    System.out.print("Opcao escolhida: ");
+    menu=leia.nextInt();
+    switch (menu){
+        case 1:
+        System.out.print("Digite a temperatura em Celsius: ");
+        celsius = leia.nextFloat();
+        resulf = (float) ((celsius*1.8)+32);
+        System.out.println();
+        System.out.println("A temperatura em graus fahrenheit e: "+ resulf);
+        System.out.println("----------------------------------------------");
+        break;
+        
+        case 2:
+        System.out.print("Digite a temperatura em Fahrenheit: ");
+        fahrenheit = leia.nextFloat();
+        resulc = (float) ((fahrenheit-32)*5/9);
+        System.out.println();
+        System.out.println("A temperatura em graus Celcius e: "+ resulc);
+        System.out.println("----------------------------------------------");
+        break;
+        
+        case 3:
+        System.out.print("Digite a cotacao: ");
+        cotacao = leia.nextFloat();
+        System.out.print("Quantos reais? ");
+        float reais = leia.nextFloat();
+        dolar = (float) (reais/cotacao);
+        System.out.println();
+        System.out.println("R$"+reais+" equivalem a "+String.format("%.2f",dolar)+"dolares");
+        System.out.println("----------------------------------------------");
+        break;
+        
+        case 4:
+        System.out.print("Digite a cotacao: ");
+        cotacao = leia.nextFloat();
+        System.out.print("Quantos dolares? ");
+        dolar = leia.nextFloat();
+        float resultadodolar = (float) (dolar*cotacao);
+        System.out.println();
+        System.out.println(dolar+" dolares equivalem a "+String.format("%.2f",resultadodolar)+"reais");
+        System.out.println("----------------------------------------------");
+        break;
+        
+        default:
+        System.out.println("Opcao invalida, tente novamente.");
+        System.out.print("-------------------------------------");
+        System.out.println("");
+           
     }
-
+     
+    }while (menu!=5);
+    
+}
 }
